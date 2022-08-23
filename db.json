@@ -1,0 +1,12 @@
+{
+    "users":[
+        {
+            "id":1,
+            "name":"admin",
+            "mail":"admin123@gmail.com",
+            "user":"prime",
+            "password":"12345",
+            "rol":"admin"
+        }
+    ]
+}
