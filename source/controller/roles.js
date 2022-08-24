@@ -1,5 +1,4 @@
 const rolesModel = require('../models/roles')
-import uniquid from 'uniqid'
 
 const getRolesData = (res,idRol) => {
     const roles = rolesModel.find({idRol:idRol}).exec((error, data) => {
