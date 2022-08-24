@@ -1,12 +1,7 @@
-var express = require('express');
-var router = express.Router();
-const url = require('url')
 var services =  require('../services/sensor')
-var servicesIndex = require('../services/index')
+var indexer = require('../services/indexers/sensor')
+const autoRouter = require('../utils/autoRouter/autoRouter')
 
-servicesIndex.forEach((value, index) => {
-    router?.[value.method]("/" + value.service, 
-                            (req, res) => services?.[value.service](req,res))
-})
+router = autoRouter(indexer, services)
 
 module.exports = router
