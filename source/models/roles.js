@@ -1,9 +1,6 @@
 const mongoose = require('mongoose');
 
 const rolesSchema = new mongoose.Schema({
-    idRol:{
-        type:Number
-    },
     nameRol:[{
         type: String
     }],
@@ -12,5 +9,5 @@ const rolesSchema = new mongoose.Schema({
     }
 })
 
-module.exports = mongoose.model('rolesTemp', rolesSchema)
+module.exports = mongoose.model('roles', rolesSchema, 'rol')
 
