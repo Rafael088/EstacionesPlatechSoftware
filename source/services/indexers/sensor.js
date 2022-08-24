@@ -2,6 +2,7 @@ const indexServices = [
     {
         method:"get",
         service:"getSensorData",
+        middleware:"printNumber"
     },
     {
         method:"post",
