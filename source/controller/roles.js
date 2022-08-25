@@ -1,19 +1,19 @@
-const RolesModel = require('../models/roles')
+const rolesModel = require('../models/roles')
 
 //Read
 const readRol = async (res)=>{
-    const roles = await RolesModel.find()
+    const roles = await rolesModel.find()
     if(!error) res.json(data[0])
 }  
 //Create
 const createRol = async (body) =>{
-    const rol = await new RolesModel({
+    const rol = await new rolesModel({
         body
     })
 }
 //Update
 const updateRol = async (doc, body)=>{
-    const rol = await RolesModel.updateOne({_id:doc._id},{
+    const rol = await rolesModel.updateOne({_id:doc._id},{
         $set:{
             body
         }
@@ -21,7 +21,7 @@ const updateRol = async (doc, body)=>{
 }
 //Delete
 const deleteRol = async (doc)=>{
-    const rol = await RolesModel.deleteOne({_id:doc._id})
+    const rol = await rolesModel.deleteOne({_id:doc._id})
 }
 
 
