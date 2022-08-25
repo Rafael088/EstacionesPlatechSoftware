@@ -1,21 +1,21 @@
 controller = require('../controller/roles')
 url = require("url")
 
-const getRol = (req, res) => {
+const createRol = (req, res) =>{
+    var msgBody = req.body.Body
+    controller.createRol(msgBody)
+}
+const readRol = (req, res) =>{
+    res(controller.readRol())
+}
+const updateRol = (req, res) =>{
     var msgFrom = req.body.From
     var msgBody = req.body.Body
-    controller.findByRol(msgFrom, msgBody)
-} 
-
-const getRolesData = (req, res) => {
-    const query = url.parse(req.url, true).query
-    
-    res.header("Access-Control-Allow-Roles", "*");
-    controller.getRolesData(res, query.idRol)
+    controller.updateRol(msgFrom ,msgBody)
+}
+const deleteRol = (req, res)=>{
+    var msgFrom = req.body.From
+    controller.deleteRol(msgFrom)
 }
 
-const getRolRouters = (req, res) => {
-    controller.getRolRouters(res)
-}
-
-module.exports = {getRol, getRolesData, getRolRouters}
+module.exports = {readRol, createRol, updateRol, deleteRol}

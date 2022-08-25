@@ -1,15 +1,19 @@
 const indexServices = [
     {
         method:"get",
-        service:"getRolesData",
+        service:"getRoles",
     },
     {
         method:"post",
-        service:"getRol",
+        service:"postNewRoles",
     }, 
     {
-        method:"get",
-        service:"getRolRouters",
+        method:"path",
+        service:"pathRoles",
+    }, 
+    {
+        method:"delete",
+        service:"deleteRoles",
     }
 ]
 
