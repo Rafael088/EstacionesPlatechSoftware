@@ -1,28 +1,28 @@
 const rolesModel = require('../models/roles')
 
-//Read
-const readRol = async (res)=>{
-    const roles = await rolesModel.find()
-    if(!error) res.json(data[0])
-}  
 //Create
-const createRol = async (body) =>{
-    const rol = await new rolesModel({
+const cRol =  (body) =>{
+    const rol = new rolesModel({
         body
     })
 }
+//Read
+const rRol =  (res) => {
+    const roles = rolesModel.find()
+    if(!error) res.json(data[0])
+}  
 //Update
-const updateRol = async (doc, body)=>{
-    const rol = await rolesModel.updateOne({_id:doc._id},{
+const uRol =  (doc, body) => {
+    const rol =  rolesModel.updateOne({_id:doc._id},{
         $set:{
             body
         }
     })
 }
 //Delete
-const deleteRol = async (doc)=>{
-    const rol = await rolesModel.deleteOne({_id:doc._id})
+const dRol =  (doc) => {
+    const rol =  rolesModel.deleteOne({_id:doc._id})
 }
 
 
-module.exports = {readRol, createRol, updateRol, deleteRol}
+module.exports = {cRol, rRol, uRol, dRol}
