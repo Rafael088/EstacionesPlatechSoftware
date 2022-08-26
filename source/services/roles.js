@@ -1,21 +1,19 @@
-controller = require('../controller/roles')
+controllerRol = require('../controller/roles.js')
 url = require("url")
 
 const cRol = (req, res) =>{
-    var msgBody = req.body.Body
-    controller.createRol(msgBody)
+    controllerRol.cRol(req, res)
 }
 const rRol = (req, res) =>{
-    res(controller.readRol())
+    controllerRol.rRol(res)
 }
 const uRol = (req, res) =>{
     var msgFrom = req.body.From
     var msgBody = req.body.Body
-    controller.updateRol(msgFrom ,msgBody)
+    controllerRol.uRol(msgFrom ,msgBody)
 }
 const dRol = (req, res)=>{
-    var msgFrom = req.body.From
-    controller.deleteRol(msgFrom)
+    controllerRol.dRol(res)
 }
 
 module.exports = {cRol, rRol, uRol, dRol}
