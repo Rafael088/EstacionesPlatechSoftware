@@ -1,13 +1,14 @@
 const mongoose = require('mongoose');
 
 const rolesSchema = new mongoose.Schema({
-    nameRol:{
-        type: String
+    name:{
+        type:String
     },
-    rolRouters:[{
-        type: String,
-    }]
-})
+    routId:[{
+        type:Array
+    }] 
+}, {versionKey:false})
 
 module.exports = mongoose.model('roles', rolesSchema, 'rol')
+
 
