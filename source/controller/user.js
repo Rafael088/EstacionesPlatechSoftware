@@ -10,14 +10,13 @@ const Cuser = (body, res) => {
 
     console.log(err)
     
-    user.save()
-    .then (() => res.status(200).send(user))
-    .catch(() => {
-        if(err.hasOwnProperty('error')){
-            res.status(400).send(err.error.details)
-        }else{
-            res.status(500).send("ya existe el usuario")
-        }})
+    if(err.hasOwnProperty('error')){
+        res.status(400).send(err.error.details) 
+    }else{
+        user.save()
+        .then (() => res.status(200).send(user))
+        .catch(() => res.status(500).send("usuario ya existe"))
+    }
 }
 
 const Ruser = (res) => {
