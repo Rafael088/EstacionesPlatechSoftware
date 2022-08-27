@@ -1,5 +1,6 @@
 const { response } = require('express')
 const userModel = require('../models/user')
+const hash = require("../utils/bcrypt/hashPasswd")
 
 const Cuser = (body) => {
     const user = new userModel(body)
@@ -20,12 +21,25 @@ const Ruser = (res) => {
     })
 }
 
-const Uuser = (id, body, res) => {
-    userModel.findByIdAndUpdate(
-        id,
-        {$set:body}, 
-        (error, data) => res.send(data)
-    )
+const Uuser = async (id, body, res) => {
+    
+    if(body.passwd != undefined){
+        hash.hashPasswd(body.passwd).then((data) => {
+            userModel.findByIdAndUpdate(
+                id,
+                {$set:{
+                    passwd:data
+                }}, 
+                (error, data) => res.send(data)
+            )
+        })
+    }else{
+        userModel.findByIdAndUpdate(
+            id,
+            {$set:body}, 
+            (error, data) => res.send(data)
+        )
+    }
 }
 
 const Duser = (id, res) => {

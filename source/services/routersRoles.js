@@ -1,4 +1,5 @@
 controllerRoutersRoles = require('../controller/routersRoles.js')
+
 const {onError} = require('../utils/error/errorHandler')
 
  url = require("url")
@@ -10,6 +11,7 @@ const {onError} = require('../utils/error/errorHandler')
 
  const rRoutersRoles = (req, res)=>{
     controllerRoutersRoles.rRoutersRoles(res)
+
  }
  
  const uRoutersRoles = (req, res) => {
