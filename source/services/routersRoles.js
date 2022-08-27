@@ -1,21 +1,27 @@
 controllerRoutersRoles = require('../controller/routersRoles.js')
+
+const {onError} = require('../utils/error/errorHandler')
+
  url = require("url")
 
  const cRoutersRoles = (req, res)=>{
-    controllerRoutersRoles.cRoutersRoles(req.body, res)
+   const {rout, error} = controllerRoutersRoles.cRoutersRoles(req.body)
+    onError(res, rout, error)
  }
 
  const rRoutersRoles = (req, res)=>{
     controllerRoutersRoles.rRoutersRoles(res)
-    console.log('carechimba')
+
  }
  
  const uRoutersRoles = (req, res) => {
-    controllerRoutersRoles.uRoutersRoles(req.params, req.body)
+   const query = url.parse(req.url, true).query
+    controllerRoutersRoles.uRoutersRoles(query.id, req.body, res)
  }
 
 const dRoutersRoles = (req, res) => {
-    controllerRoutersRoles.dRoutersRoles(req)
+   const query = url.parse(req.url, true).query
+    controllerRoutersRoles.dRoutersRoles(query.id, res)
 }
 
 module.exports = {cRoutersRoles, rRoutersRoles, uRoutersRoles, dRoutersRoles}
