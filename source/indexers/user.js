@@ -2,6 +2,7 @@ indexUser = [
     {
         method  : "post",
         service : "Cuser",
+        middleware: "token"
     },
     {
         method  : "get",
