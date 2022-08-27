@@ -28,36 +28,5 @@ const oauth = (body,res) => {
         })
 }
 
-const token = (req, res, next) => {
-
-    
-    try{
-        const token = req.header('Authorization').replace('Bearer ', '');
-        const secret = new TextEncoder().encode(
-            process.env.JWT_SECRET
-        );
-    
-        console.log(token)
-        console.log(secret)
-
-        try {
-            
-            const jwtVerification = jose.jwtVerify(token, secret)
-
-            jwtVerification.then(data => console.log(data))
-
-            console.log("Token valido")
-            
-          } catch (e) {
-            res.send("Token invalido");
-          }
-        
-          next()
-    }catch(e){
-        res.status(500).send("no se presento toquen")
-    }
-}
-
-
-module.exports = {oauth, token}
+module.exports = {oauth}
 
