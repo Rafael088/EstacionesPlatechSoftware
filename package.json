@@ -1,7 +1,7 @@
 {
-  "name": "recibirtwilio",
+  "name": "antenas_inteligentes",
   "version": "1.0.0",
-  "description": "broker sms created for receive messages from twilio and put it in mongodb database",
+  "description": "backend para aplicacion de monitoreo y prediccion de antenas ambientales en relacion a las fallas electricas",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
