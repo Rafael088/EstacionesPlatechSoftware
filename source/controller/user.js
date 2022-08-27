@@ -1,23 +1,32 @@
 const { response } = require('express')
+const { object } = require('joi')
 const userModel = require('../models/user')
 const hash = require("../utils/bcrypt/hashPasswd")
 
-const Cuser = (body) => {
+const Cuser = (body, res) => {
+
     const user = new userModel(body)
+    var err = user.joiValidate(body)
 
-    try{
-        user.save()
-        return {user:user, error:NaN}
-    }catch{
-        const error = "error en controlador"
-        return {user:NaN, error:error}
-    }
-
+    console.log(err)
+    
+    user.save()
+    .then (() => res.status(200).send(user))
+    .catch(() => {
+        if(err.hasOwnProperty('error')){
+            res.status(400).send(err.error.details)
+        }else{
+            res.status(500).send("ya existe el usuario")
+        }})
 }
 
 const Ruser = (res) => {
     userModel.find({}, (error, data) => {
-        res.send(data)
+        if(!error){
+            res.status(200).send(data)
+        }else{
+            res.status(500).send(" error al buscar los usuarios")
+        }
     })
 }
 

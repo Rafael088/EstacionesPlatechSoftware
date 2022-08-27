@@ -2,6 +2,7 @@ const jose = require('jose')
 
 const OAuth = (req, res, next) => {
 
+
     try{
         const token = req.header('Authorization').replace('Bearer ', '');
         const secret = new TextEncoder().encode(
@@ -13,7 +14,12 @@ const OAuth = (req, res, next) => {
             .catch((error) => res.status(400).send("token invalido"))
 
     }catch(e){
-        res.status(500).send("error en la validacion")
+        console.log(e)
+        if(req.header("Authorization") == undefined){
+            res.status(400).send("Token no presentado")
+        }else{
+            res.status(500).send("error en el servidor")
+        }
     }
 }
 
