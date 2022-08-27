@@ -1,6 +1,9 @@
 const mongoose = require('mongoose');
-
+const joi = require('joi');
 const bcrypt = require('bcrypt-nodejs')
+
+const {userRules} = require("../rules/user");
+const { ruleError } = require('../utils/error/ruleError');
 
 const userSchema = new mongoose.Schema({
     name:{
@@ -12,18 +15,19 @@ const userSchema = new mongoose.Schema({
     },
     email:{
         type     : String,
-        //required : true,
-        //unique   : true
+        unique   : true
     },
     passwd:{
         type     : String,
-        required : true,
     },
     rol:{
         type    : String,
         default : "unassigned"
+    },
+    created: { 
+        type: Date, 
+        default: Date.now 
     }
-
 }, { versionKey: false })
 
 userSchema.pre('save',function(next){
@@ -50,5 +54,35 @@ userSchema.pre('save',function(next){
 
     return next()
 })
+
+
+userSchema.methods.joiValidate = (obj) => {
+	
+    const schema = joi.object({ 
+        name  : joi.string()
+                .min(6)
+                .required()
+                .error(errs => ruleError(errs, userRules,'name')),
+        
+        email : joi.string()
+                .min(6)
+                .required()
+                .email({ minDomainSegments: 2, tlds: { allow: ['com', 'net'] } })
+                .error(errs => ruleError(errs, userRules, 'email')),
+
+        passwd: joi.string()
+                  .min(6)
+                  .required()
+                  .error(errs => ruleError(errs, userRules, 'passwd')),
+
+        age: joi.number().integer()
+             .min(0)
+             .max(170)
+             .error(errs => ruleError(errs, userRules, 'age')),
+    })
+
+
+	return schema.validate(obj);
+}
 
 module.exports = mongoose.model('user', userSchema)

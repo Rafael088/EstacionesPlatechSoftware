@@ -2,9 +2,8 @@ const controllerUser = require('../controller/user')
 const {onError} = require('../utils/error/errorHandler')
 url = require("url")
 
-const Cuser = (req, res) => {
-    const {user, error} = controllerUser.Cuser(req.body)
-    onError(res, user, error)
+const Cuser = (req, res, next) => {
+    controllerUser.Cuser(req.body, res)
 }
 
 const Ruser = (req, res) => {
