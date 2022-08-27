@@ -1,4 +1,5 @@
 controllerRol = require('../controller/roles.js')
+
 const {onError} = require('../utils/error/errorHandler')
 
 url = require("url")
@@ -13,6 +14,7 @@ const rRol = (req, res) =>{
 }
 
 const uRol = (req, res) =>{
+
     const query = url.parse(req.url, true).query
     console.log(query.id)
     controllerRol.uRol(query.id, req.body, res)

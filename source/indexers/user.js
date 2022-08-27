@@ -1,19 +1,19 @@
 indexUser = [
     {
-        method:"post",
-        service:"Cuser",
+        method  : "post",
+        service : "Cuser"
     },
     {
-        method:"get",
-        service:"Ruser"
+        method  : "get",
+        service : "Ruser"
     },
     {
-        method:"patch",
-        service:"Uuser"
+        method  : "patch",
+        service : "Uuser"
     },
     {
-        method:"delete",
-        service:"Duser"
+        method  : "delete",
+        service : "Duser"
     }
 ]
 
