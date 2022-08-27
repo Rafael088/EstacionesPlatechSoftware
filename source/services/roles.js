@@ -19,6 +19,7 @@ const uRol = (req, res) =>{
     console.log(query.id)
     controllerRol.uRol(query.id, req.body, res)
 }
+
 const dRol = (req, res)=>{
     const query = url.parse(req.url, true).query
     controllerRol.dRol(query.id, res)
