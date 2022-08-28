@@ -1,24 +1,20 @@
 const indexServices = [
     {
         method:"get",
-        service:"rRol",
+        service:"Ranthenna",
     },
     {
         method:"post",
-        service:"cRol",
+        service:"Canthenna",
     },
     {
         method:"patch",
-        service:"uRol"
+        service:"Uanthenna"
     }, 
     {
         method:"delete",
-        service:"dRol",
+        service:"Danthenna",
 
-    },
-    {
-        method:"patch",
-        service:"addRoutsRol"
     }
 ]
 

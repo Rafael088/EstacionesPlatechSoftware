@@ -2,6 +2,7 @@ const { response } = require('express')
 const { object } = require('joi')
 const userModel = require('../models/user')
 const hash = require("../utils/bcrypt/hashPasswd")
+const rolesModel = require('../models/roles')
 
 const Cuser = (body, res) => {
 
@@ -55,4 +56,23 @@ const Duser = (id, res) => {
     )
 }
 
-module.exports = {Cuser, Ruser, Uuser, Duser}
+const AddRolUser = (id, rol, res)=>{
+    userModel.findByIdAndUpdate(
+        id,
+        {$set:rol},
+        (error, data) => res.send(data)
+    )
+}
+
+const RroutsUser = (id, res) =>{
+    const user = userModel.findById(id)
+    rolesModel.findOne(user.rol, (error, data) => {
+        if(!error){
+            res.status(200).send(data)
+        }else{
+            res.status(500).send(" error")
+        }
+    })
+    
+}
+module.exports = {Cuser, Ruser, Uuser, Duser, AddRolUser, RroutsUser}
