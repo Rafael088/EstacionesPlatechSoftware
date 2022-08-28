@@ -20,5 +20,12 @@ const Duser = (req, res) => {
     console.log(query.id)
     controllerUser.Duser(query.id, res)
 }
-
-module.exports = {Cuser, Ruser, Uuser, Duser}
+const AddRolUser = (req, res) =>{
+    const query = url.parse(req.url, true).query
+    controllerUser.AddRolUser(query.id, req.body, res)
+}
+const RroutsUser = (req, res) => {
+    const query = url.parse(req.url, true).query
+    controllerUser.RroutsUser(query.id, res)
+}
+module.exports = {Cuser, Ruser, Uuser, Duser, AddRolUser, RroutsUser}

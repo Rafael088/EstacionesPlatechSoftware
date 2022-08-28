@@ -14,6 +14,14 @@ indexUser = [
     {
         method  : "delete",
         service : "Duser"
+    },
+    {
+        method  : "patch",
+        service : "AddRolUser"
+    },
+    {
+        method : "get",
+        service : "RroutsUser"
     }
 ]
 

@@ -34,6 +34,13 @@ const dRol =  (id, res) => {
         (error, data) => res.send(data)
     )
 }
+//Add Routs
+const addRoutsRol = (id, routs, res) =>{
+    rolesModel.findByIdAndUpdate(
+        id,
+        {$set:routs}, 
+        (error, data) => res.send(data)
+    )
+}
 
-
-module.exports = {cRol, rRol, uRol, dRol}
+module.exports = {cRol, rRol, uRol, dRol, addRoutsRol}

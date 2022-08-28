@@ -24,5 +24,9 @@ const dRol = (req, res)=>{
     const query = url.parse(req.url, true).query
     controllerRol.dRol(query.id, res)
 }
+const addRoutsRol = (req, res) =>{
+    const query = url.parse(req.url, true).query
+    controllerRol.uRol(query.id, req.body, res)
+}
 
-module.exports = {cRol, rRol, uRol, dRol}
+module.exports = {cRol, rRol, uRol, dRol, addRoutsRol}

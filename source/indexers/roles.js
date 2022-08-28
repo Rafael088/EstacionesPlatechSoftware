@@ -15,6 +15,10 @@ const indexServices = [
         method:"delete",
         service:"dRol",
 
+    },
+    {
+        method:"patch",
+        service:"addRoutsRol"
     }
 ]
 

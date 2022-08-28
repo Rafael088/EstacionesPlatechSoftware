@@ -4,9 +4,9 @@ const rolesSchema = new mongoose.Schema({
     name:{
         type:String
     },
-    routId:[{
-        type:Array
-    }] 
+    routId:{
+        type: [String]
+    } 
 }, {versionKey:false})
 
 module.exports = mongoose.model('roles', rolesSchema, 'rol')
