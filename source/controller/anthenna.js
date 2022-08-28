@@ -1,4 +1,5 @@
 const anthennaModel = require('../models/anthenna')
+const aiMotorModel = require('../models/aiMotor')
 //Create
 const Canthenna = async (body) => {
     const anthenna = await new anthennaModel(body)
@@ -44,4 +45,18 @@ const Danthenna = async (id, res) => {
     )
 }
 
-module.exports = {Canthenna, Ranthena, Uanthenna, Danthenna}
+//AddSensor
+const RiaAnthe = async (id, res) => {
+
+    const anthe = await anthennaModel.findById(id)
+    aiMotorModel.find(anthe.aiMotor,  (error, data) => {
+        if(!error){
+            res.status(200).send(data)
+        }else{
+            res.status(500).send(" error")
+        }
+    })
+}
+
+
+module.exports = {Canthenna, Ranthena, Uanthenna, Danthenna, RiaAnthe}
