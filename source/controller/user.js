@@ -7,9 +7,7 @@ const Cuser = (body, res) => {
 
     const user = new userModel(body)
     var err = user.joiValidate(body)
-
-    console.log(err)
-    
+     
     if(err.hasOwnProperty('error')){
         res.status(400).send(err.error.details) 
     }else{

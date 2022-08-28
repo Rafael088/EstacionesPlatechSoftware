@@ -17,5 +17,4 @@ const autoRouter = (indexer, services, middleware) => {
 
     return router
 }
-
 module.exports = autoRouter
