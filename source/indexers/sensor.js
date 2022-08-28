@@ -1,17 +1,20 @@
-const indexServices = [
+const sensorIndex = [
     {
-        method:"get",
-        service:"getSensorData",
-        middleware:"printNumber"
+        method  : "post",
+        service : "Csensor"
     },
     {
-        method:"post",
-        service:"getSms",
-    }, 
+        method  : "get",
+        service : "Rsensor"
+    },
     {
-        method:"get",
-        service:"getSensorsOrigen",
+        method: "patch",
+        service: "Usensor"
+    },
+    {
+        method: "delete",
+        service:"Dsensor"
     }
 ]
 
-module.exports = indexServices
+module.exports = sensorIndex
