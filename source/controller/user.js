@@ -58,6 +58,7 @@ const Duser = (id, res) => {
         (error, data) => res.send(data)
     )
 }
+
 const AddRolUser = (id, rol, res)=>{
     userModel.findByIdAndUpdate(
         id,
@@ -65,6 +66,7 @@ const AddRolUser = (id, rol, res)=>{
         (error, data) => res.send(data)
     )
 }
+
 const RroutsUser = (id, res) =>{
     const user = userModel.findById(id)
     rolesModel.findOne(user.rol, (error, data) => {

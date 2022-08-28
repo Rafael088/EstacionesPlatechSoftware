@@ -3,13 +3,15 @@ const rolesModel = require('../models/roles')
 //Create
 const cRol =  async (body) =>{
     const rol = await new rolesModel(body)
-    try{
-        rol.save()
-        return { rol: rol, error:NaN}
-    }catch{
-        const error = "Error en controlador"
-        return {rol:NaN, error : error}
-    }
+    var err = rol.joiValidate(body)
+    rol.save()
+        .then (() => res.status(200).send(rol))
+        .catch(() => {
+            if(err.hasOwnProperty('error')){
+                res.status(400).send(err.error.details)
+            }else{
+                res.status(500).send("ya existe el Rol Animal")
+            }})
 }
 //Read
 const rRol =  async (res) => {
