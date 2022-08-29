@@ -12,7 +12,6 @@ const Canthenna = async (body) => {
             }else{
                 res.status(500).send("ya existe la Antena Animal")
             }})
-
 }
 
 //Read
