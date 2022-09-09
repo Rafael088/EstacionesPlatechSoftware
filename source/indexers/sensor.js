@@ -14,6 +14,10 @@ const sensorIndex = [
     {
         method: "delete",
         service:"Dsensor"
+    },
+    {
+        method  : "get",
+        service : "sensorId"
     }
 ]
 

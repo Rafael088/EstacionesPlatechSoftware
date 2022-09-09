@@ -80,4 +80,16 @@ const Dsensor = (id, res) => {
         }
     })
 }
-module.exports = {Csensor, Rsensor, Usensor, Dsensor}
+
+const sensorId = (id, res) => {
+    sensorModel.findById(id)
+        .exec((error, data) => {
+            if(error){
+                res.status(500).send("error al buscar sensor")
+            }else{
+                res.status(200).send(data)
+            }
+        })
+}
+
+module.exports = {Csensor, Rsensor, Usensor, Dsensor, sensorId}
