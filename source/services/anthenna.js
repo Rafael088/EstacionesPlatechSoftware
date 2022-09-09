@@ -25,4 +25,9 @@ const RiaAnthe = (req, res) => {
     controllerAnth.RiaAnthe(query.id, res)
 }
 
-module.exports = {Canthenna, Ranthenna, Uanthenna, Danthenna, RiaAnthe}
+const GanthennaLotLat = (req, res) => {
+    const query = url.parse(req.url, true).query
+    controllerAnth.GanthennaLotLat(query, res)
+}
+
+module.exports = {Canthenna, Ranthenna, Uanthenna, Danthenna, RiaAnthe, GanthennaLotLat}

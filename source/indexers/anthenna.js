@@ -14,7 +14,10 @@ const indexServices = [
     {
         method:"delete",
         service:"Danthenna",
-
+    },
+    {
+        method  : "get",
+        service : "GanthennaLotLat"
     }
 ]
 

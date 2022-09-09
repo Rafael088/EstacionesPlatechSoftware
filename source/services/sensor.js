@@ -18,4 +18,9 @@ const Dsensor = (req, res) => {
     sensorController.Dsensor(query.id, res)
 }
 
-module.exports = {Csensor, Rsensor, Usensor, Dsensor}
+const sensorId = (req, res) => {
+    const query = url.parse(req.url, true).query
+    sensorController.sensorId(query.id, res)
+}
+
+module.exports = {Csensor, Rsensor, Usensor, Dsensor, sensorId}

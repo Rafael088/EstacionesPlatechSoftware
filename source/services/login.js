@@ -10,4 +10,5 @@ const oauth = (req, res) => {
     loginController.oauth(req.body, res)
 }
 
+
 module.exports = {oauth}
