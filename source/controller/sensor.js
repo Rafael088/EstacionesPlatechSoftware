@@ -37,16 +37,18 @@ const Usensor = (id, body, res) => {
     }else{
         sensorModel.findByIdAndUpdate(id,{
             $set:{
-                temp       : body.temp,
-                hum        : body.hum,
-                anenoMeter : body.anenoMeter,
-                rain       : body.rain,
-                lux        : body.lux
+                temp            : body.temp,
+                hum             : body.hum,
+                anenoMeter      : body.anenoMeter,
+                rain            : body.rain,
+                lux             : body.lux,
+                predictionState : false,
             },
         }, (error, doc) => {
             if(error){
                 res.status(500).send("error en la actualizacion del sensor")
             }else{
+
                 const now = new Date
                 doc.tempHistory.valor.push(body.temp)
                 doc.humHistory.valor.push(body.hum)
@@ -59,7 +61,7 @@ const Usensor = (id, body, res) => {
                 doc.anenoMeterHistory.date.push(now)
                 doc.rainHistory.date.push(now)
                 doc.luxHistory.date.push(now)
-
+                
                 try{
                     doc.save()
                     res.status(200).send(doc)

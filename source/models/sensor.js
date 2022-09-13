@@ -41,7 +41,10 @@ const sensorSchema = mongoose.Schema({
     luxHistory: {
         valor:[Number],
         date:[Date]
-    } 
+    },
+    predictionState:{
+        type : Boolean
+    }
 },{versionKey : false})
 
 sensorSchema.methods.joiValidate = (body) =>{
