@@ -10,37 +10,17 @@ const sensorSchema = mongoose.Schema({
     temp : {
         type : Number
     },
-    tempHistory : {
-        valor:[Number],
-        date:[Date]
-    },
     hum : {
         type : Number
-    },
-    humHistory : {
-        valor:[Number],
-        date:[Date]
     },
     anenoMeter : {
         type : Number
     },
-    anenoMeterHistory : {
-        valor:[Number],
-        date:[Date]
-    },
     rain : {
         type : Boolean
     },
-    rainHistory : {
-        valor:[Number],
-        date:[Date]
-    },
     lux :{
         type : Number
-    },
-    luxHistory: {
-        valor:[Number],
-        date:[Date]
     },
     predictionState:{
         type : Boolean

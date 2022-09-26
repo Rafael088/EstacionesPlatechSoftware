@@ -50,17 +50,6 @@ const Usensor = (id, body, res) => {
             }else{
 
                 const now = new Date
-                doc.tempHistory.valor.push(body.temp)
-                doc.humHistory.valor.push(body.hum)
-                doc.anenoMeterHistory.valor.push(body.anenoMeter)
-                doc.rainHistory.valor.push(body.rain)
-                doc.luxHistory.valor.push(body.lux)
-
-                doc.tempHistory.date.push(now)
-                doc.humHistory.date.push(now)
-                doc.anenoMeterHistory.date.push(now)
-                doc.rainHistory.date.push(now)
-                doc.luxHistory.date.push(now)
                 
                 try{
                     doc.save()
